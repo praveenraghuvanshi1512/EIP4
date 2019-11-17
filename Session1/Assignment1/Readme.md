@@ -24,11 +24,11 @@ print(score)
 
 4. **1x1 Convolution**
 
-   It's a special type of convolution used to reduce the filters without changing other parameters.
+   It's a special type of convolution used to reduce the channels without changing other parameters. It is going to combine those features which are contextually linked together.
 
 5. **3x3 Convolution**
 
-   Its a standard convolution with 3x3 kernel and reduces the dimensionality by 2 in every layer.  With 3x3 we can make any size of kernel.
+   Its a standard convolution with 3x3 kernel and reduces the dimensionality by 2 in every layer.  With 3x3 we can make any size of kernel. 3x3 is a feature extractor
 
 6. **Feature Maps**
 
