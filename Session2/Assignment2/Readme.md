@@ -4,6 +4,8 @@
 
 #### No of Total Parameters : 14,720
 
+#### ipynb file : [Solution](.\EIP4_A2_Praveen_Raghuvanshi.ipynb)
+
 #### Result
 
 ```python
