@@ -8,19 +8,19 @@ Accuracy on test data is: 81.88
 
 ### Updated Model
 
-- Val Accuracy(48th Epoch): **82.59%**
+- Val Accuracy(49th Epoch): **83.98%**
 - Total parameters: **84,277**
 - No of Epochs: 50
-- ipynb file : [Solution Iteration Twelveth](EIP4_A3_Praveen_Raghuvanshi_82_44.ipynb)
+- ipynb file : [Solution](EIP4_A3_Praveen_Raghuvanshi_Detailed.ipynb)
 
 ```python
-Accuracy on test data is: 81.60
+Accuracy on test data is: 82.31
 ```
 
 ##### Model 
 
 ```python
-# Base Model : Define the model
+# Define the model
 # Replace Conv2D with SeparableConv2D
 # Add BN before activation
 # Remove D1(393,728) and D2(131,328)
@@ -30,6 +30,9 @@ Accuracy on test data is: 81.60
 # Reduce Batch size (128 --> 64)
 # Reduce Batch size (128 --> 64 --> 32)
 # Removed Last Dense layer --> Added GAP
+# Image Augmentation (Rotation and flip)
+# Image Augmentation (Rotation- 90 and horizontal flip)
+# Image Augmentation (Rotation range, horizontal flip, shift(width and height))
 
 model = Sequential()
 
@@ -73,118 +76,126 @@ model.add(Activation('softmax'))
 
 # Compile the model
 model.compile(optimizer='adam', loss='categorical_crossentropy', metrics=['accuracy'])
+
 ```
 
 ##### Logs
 
-```
-/usr/local/lib/python3.6/dist-packages/ipykernel_launcher.py:12: UserWarning: The semantics of the Keras 2 argument `steps_per_epoch` is not the same as the Keras 1 argument `samples_per_epoch`. `steps_per_epoch` is the number of batches to draw from the generator at each epoch. Basically steps_per_epoch = samples_per_epoch/batch_size. Similarly `nb_val_samples`->`validation_steps` and `val_samples`->`steps` arguments have changed. Update your method calls accordingly.
-  if sys.path[0] == '':
-/usr/local/lib/python3.6/dist-packages/ipykernel_launcher.py:12: UserWarning: Update your `fit_generator` call to the Keras 2 API: `fit_generator(<keras_pre..., validation_data=(array([[[..., verbose=1, steps_per_epoch=1562, epochs=50)`
-  if sys.path[0] == '':
-Epoch 1/50
-1562/1562 [==============================] - 53s 34ms/step - loss: 1.2843 - acc: 0.5367 - val_loss: 1.0842 - val_acc: 0.6185
-Epoch 2/50
-1562/1562 [==============================] - 48s 31ms/step - loss: 0.9188 - acc: 0.6764 - val_loss: 0.9258 - val_acc: 0.6803
-Epoch 3/50
-1562/1562 [==============================] - 49s 31ms/step - loss: 0.7881 - acc: 0.7249 - val_loss: 0.7868 - val_acc: 0.7305
-Epoch 4/50
-1562/1562 [==============================] - 48s 31ms/step - loss: 0.7133 - acc: 0.7516 - val_loss: 0.7924 - val_acc: 0.7330
-Epoch 5/50
-1562/1562 [==============================] - 48s 31ms/step - loss: 0.6624 - acc: 0.7684 - val_loss: 0.7295 - val_acc: 0.7463
-Epoch 6/50
-1562/1562 [==============================] - 48s 31ms/step - loss: 0.6140 - acc: 0.7858 - val_loss: 0.7141 - val_acc: 0.7584
-Epoch 7/50
-1562/1562 [==============================] - 48s 31ms/step - loss: 0.5857 - acc: 0.7949 - val_loss: 0.7703 - val_acc: 0.7485
-Epoch 8/50
-1562/1562 [==============================] - 48s 31ms/step - loss: 0.5592 - acc: 0.8041 - val_loss: 0.6813 - val_acc: 0.7710
-Epoch 9/50
-1562/1562 [==============================] - 48s 31ms/step - loss: 0.5268 - acc: 0.8161 - val_loss: 0.6261 - val_acc: 0.7870
-Epoch 10/50
-1562/1562 [==============================] - 48s 31ms/step - loss: 0.5070 - acc: 0.8227 - val_loss: 0.5891 - val_acc: 0.8015
-Epoch 11/50
-1562/1562 [==============================] - 48s 31ms/step - loss: 0.4845 - acc: 0.8298 - val_loss: 0.6300 - val_acc: 0.7896
-Epoch 12/50
-1562/1562 [==============================] - 48s 31ms/step - loss: 0.4668 - acc: 0.8362 - val_loss: 0.7000 - val_acc: 0.7726
-Epoch 13/50
-1562/1562 [==============================] - 48s 31ms/step - loss: 0.4522 - acc: 0.8406 - val_loss: 0.6797 - val_acc: 0.7741
-Epoch 14/50
-1562/1562 [==============================] - 48s 31ms/step - loss: 0.4392 - acc: 0.8450 - val_loss: 0.7646 - val_acc: 0.7599
-Epoch 15/50
-1562/1562 [==============================] - 48s 31ms/step - loss: 0.4216 - acc: 0.8513 - val_loss: 0.6265 - val_acc: 0.7958
-Epoch 16/50
-1562/1562 [==============================] - 48s 31ms/step - loss: 0.4107 - acc: 0.8561 - val_loss: 0.6135 - val_acc: 0.8053
-Epoch 17/50
-1562/1562 [==============================] - 48s 31ms/step - loss: 0.3963 - acc: 0.8602 - val_loss: 0.6659 - val_acc: 0.7826
-Epoch 18/50
-1562/1562 [==============================] - 48s 31ms/step - loss: 0.3860 - acc: 0.8635 - val_loss: 0.6520 - val_acc: 0.7912
-Epoch 19/50
-1562/1562 [==============================] - 48s 31ms/step - loss: 0.3738 - acc: 0.8682 - val_loss: 0.6832 - val_acc: 0.7843
-Epoch 20/50
-1562/1562 [==============================] - 48s 31ms/step - loss: 0.3658 - acc: 0.8696 - val_loss: 0.6009 - val_acc: 0.8066
-Epoch 21/50
-1562/1562 [==============================] - 48s 31ms/step - loss: 0.3572 - acc: 0.8720 - val_loss: 0.6503 - val_acc: 0.8064
-Epoch 22/50
-1562/1562 [==============================] - 48s 31ms/step - loss: 0.3457 - acc: 0.8778 - val_loss: 0.5709 - val_acc: 0.8147
-Epoch 23/50
-1562/1562 [==============================] - 48s 31ms/step - loss: 0.3381 - acc: 0.8791 - val_loss: 0.6083 - val_acc: 0.8096
-Epoch 24/50
-1562/1562 [==============================] - 48s 31ms/step - loss: 0.3336 - acc: 0.8824 - val_loss: 0.5695 - val_acc: 0.8207
-Epoch 25/50
-1562/1562 [==============================] - 48s 30ms/step - loss: 0.3237 - acc: 0.8850 - val_loss: 0.5997 - val_acc: 0.8168
-Epoch 26/50
-1562/1562 [==============================] - 48s 31ms/step - loss: 0.3153 - acc: 0.8887 - val_loss: 0.6003 - val_acc: 0.8090
-Epoch 27/50
-1562/1562 [==============================] - 48s 31ms/step - loss: 0.3136 - acc: 0.8894 - val_loss: 0.6294 - val_acc: 0.8115
-Epoch 28/50
-1562/1562 [==============================] - 48s 31ms/step - loss: 0.3028 - acc: 0.8917 - val_loss: 0.6110 - val_acc: 0.8114
-Epoch 29/50
-1562/1562 [==============================] - 48s 31ms/step - loss: 0.3016 - acc: 0.8936 - val_loss: 0.7256 - val_acc: 0.7877
-Epoch 30/50
-1562/1562 [==============================] - 48s 31ms/step - loss: 0.2916 - acc: 0.8962 - val_loss: 0.5975 - val_acc: 0.8151
-Epoch 31/50
-1562/1562 [==============================] - 48s 31ms/step - loss: 0.2868 - acc: 0.8982 - val_loss: 0.6200 - val_acc: 0.8110
-Epoch 32/50
-1562/1562 [==============================] - 48s 31ms/step - loss: 0.2880 - acc: 0.8968 - val_loss: 0.6016 - val_acc: 0.8205
-Epoch 33/50
-1562/1562 [==============================] - 48s 31ms/step - loss: 0.2764 - acc: 0.9006 - val_loss: 0.6457 - val_acc: 0.8112
-Epoch 34/50
-1562/1562 [==============================] - 48s 31ms/step - loss: 0.2742 - acc: 0.9009 - val_loss: 0.5811 - val_acc: 0.8229
-Epoch 35/50
-1562/1562 [==============================] - 48s 31ms/step - loss: 0.2652 - acc: 0.9052 - val_loss: 0.5879 - val_acc: 0.8188
-Epoch 36/50
-1562/1562 [==============================] - 48s 31ms/step - loss: 0.2627 - acc: 0.9064 - val_loss: 0.6543 - val_acc: 0.8102
-Epoch 37/50
-1562/1562 [==============================] - 48s 30ms/step - loss: 0.2631 - acc: 0.9044 - val_loss: 0.6193 - val_acc: 0.8161
-Epoch 38/50
-1562/1562 [==============================] - 48s 31ms/step - loss: 0.2582 - acc: 0.9084 - val_loss: 0.6099 - val_acc: 0.8106
-Epoch 39/50
-1562/1562 [==============================] - 48s 31ms/step - loss: 0.2498 - acc: 0.9100 - val_loss: 0.5843 - val_acc: 0.8222
-Epoch 40/50
-1562/1562 [==============================] - 48s 31ms/step - loss: 0.2515 - acc: 0.9098 - val_loss: 0.6101 - val_acc: 0.8145
-Epoch 41/50
-1562/1562 [==============================] - 48s 31ms/step - loss: 0.2453 - acc: 0.9120 - val_loss: 0.6001 - val_acc: 0.8219
-Epoch 42/50
-1562/1562 [==============================] - 48s 31ms/step - loss: 0.2443 - acc: 0.9106 - val_loss: 0.6396 - val_acc: 0.8184
-Epoch 43/50
-1562/1562 [==============================] - 48s 31ms/step - loss: 0.2391 - acc: 0.9140 - val_loss: 0.6506 - val_acc: 0.8141
-Epoch 44/50
-1562/1562 [==============================] - 48s 31ms/step - loss: 0.2419 - acc: 0.9129 - val_loss: 0.5826 - val_acc: 0.8245
-Epoch 45/50
-1562/1562 [==============================] - 48s 31ms/step - loss: 0.2298 - acc: 0.9173 - val_loss: 0.6746 - val_acc: 0.8042
-Epoch 46/50
-1562/1562 [==============================] - 48s 31ms/step - loss: 0.2325 - acc: 0.9157 - val_loss: 0.6638 - val_acc: 0.8100
-Epoch 47/50
-1562/1562 [==============================] - 48s 31ms/step - loss: 0.2285 - acc: 0.9175 - val_loss: 0.6530 - val_acc: 0.8168
-Epoch 48/50
-1562/1562 [==============================] - 48s 31ms/step - loss: 0.2237 - acc: 0.9200 - val_loss: 0.6083 - val_acc: 0.8259
-Epoch 49/50
-1562/1562 [==============================] - 48s 31ms/step - loss: 0.2189 - acc: 0.9219 - val_loss: 0.6156 - val_acc: 0.8244
-Epoch 50/50
-1562/1562 [==============================] - 48s 31ms/step - loss: 0.2204 - acc: 0.9198 - val_loss: 0.6606 - val_acc: 0.8160
-Model took 2403.04 seconds to train
+```python
+WARNING:tensorflow:From /usr/local/lib/python3.6/dist-packages/tensorflow_core/python/ops/math_grad.py:1424: where (from tensorflow.python.ops.array_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use tf.where in 2.0, which has the same broadcast rule as np.where
+/usr/local/lib/python3.6/dist-packages/ipykernel_launcher.py:14: UserWarning: The semantics of the Keras 2 argument `steps_per_epoch` is not the same as the Keras 1 argument `samples_per_epoch`. `steps_per_epoch` is the number of batches to draw from the generator at each epoch. Basically steps_per_epoch = samples_per_epoch/batch_size. Similarly `nb_val_samples`->`validation_steps` and `val_samples`->`steps` arguments have changed. Update your method calls accordingly.
+  
+/usr/local/lib/python3.6/dist-packages/ipykernel_launcher.py:14: UserWarning: Update your `fit_generator` call to the Keras 2 API: `fit_generator(<keras_pre..., validation_data=(array([[[..., verbose=1, steps_per_epoch=1562, epochs=50)`
+  
+WARNING:tensorflow:From /usr/local/lib/python3.6/dist-packages/keras/backend/tensorflow_backend.py:1033: The name tf.assign_add is deprecated. Please use tf.compat.v1.assign_add instead.
 
-Accuracy on test data is: 81.60
+WARNING:tensorflow:From /usr/local/lib/python3.6/dist-packages/keras/backend/tensorflow_backend.py:1020: The name tf.assign is deprecated. Please use tf.compat.v1.assign instead.
+
+Epoch 1/50
+1562/1562 [==============================] - 61s 39ms/step - loss: 1.4158 - acc: 0.4871 - val_loss: 1.2780 - val_acc: 0.5644
+Epoch 2/50
+1562/1562 [==============================] - 56s 36ms/step - loss: 1.0960 - acc: 0.6101 - val_loss: 1.1510 - val_acc: 0.6210
+Epoch 3/50
+1562/1562 [==============================] - 56s 36ms/step - loss: 0.9708 - acc: 0.6593 - val_loss: 1.0909 - val_acc: 0.6316
+Epoch 4/50
+1562/1562 [==============================] - 57s 36ms/step - loss: 0.8982 - acc: 0.6877 - val_loss: 0.8331 - val_acc: 0.7111
+Epoch 5/50
+1562/1562 [==============================] - 57s 36ms/step - loss: 0.8404 - acc: 0.7071 - val_loss: 0.8924 - val_acc: 0.6952
+Epoch 6/50
+1562/1562 [==============================] - 56s 36ms/step - loss: 0.8029 - acc: 0.7193 - val_loss: 0.8034 - val_acc: 0.7297
+Epoch 7/50
+1562/1562 [==============================] - 56s 36ms/step - loss: 0.7739 - acc: 0.7289 - val_loss: 0.9305 - val_acc: 0.6924
+Epoch 8/50
+1562/1562 [==============================] - 56s 36ms/step - loss: 0.7459 - acc: 0.7381 - val_loss: 0.8604 - val_acc: 0.7066
+Epoch 9/50
+1562/1562 [==============================] - 56s 36ms/step - loss: 0.7248 - acc: 0.7478 - val_loss: 0.8059 - val_acc: 0.7354
+Epoch 10/50
+1562/1562 [==============================] - 58s 37ms/step - loss: 0.7080 - acc: 0.7553 - val_loss: 0.7535 - val_acc: 0.7423
+Epoch 11/50
+1562/1562 [==============================] - 58s 37ms/step - loss: 0.6871 - acc: 0.7603 - val_loss: 0.7263 - val_acc: 0.7648
+Epoch 12/50
+1562/1562 [==============================] - 58s 37ms/step - loss: 0.6772 - acc: 0.7649 - val_loss: 0.6379 - val_acc: 0.7788
+Epoch 13/50
+1562/1562 [==============================] - 58s 37ms/step - loss: 0.6638 - acc: 0.7704 - val_loss: 0.6586 - val_acc: 0.7713
+Epoch 14/50
+1562/1562 [==============================] - 57s 37ms/step - loss: 0.6445 - acc: 0.7737 - val_loss: 0.6197 - val_acc: 0.7895
+Epoch 15/50
+1562/1562 [==============================] - 57s 36ms/step - loss: 0.6360 - acc: 0.7800 - val_loss: 0.6554 - val_acc: 0.7772
+Epoch 16/50
+1562/1562 [==============================] - 57s 37ms/step - loss: 0.6251 - acc: 0.7824 - val_loss: 0.7026 - val_acc: 0.7596
+Epoch 17/50
+1562/1562 [==============================] - 58s 37ms/step - loss: 0.6179 - acc: 0.7844 - val_loss: 0.6000 - val_acc: 0.7966
+Epoch 18/50
+1562/1562 [==============================] - 58s 37ms/step - loss: 0.6077 - acc: 0.7881 - val_loss: 0.5734 - val_acc: 0.8041
+Epoch 19/50
+1562/1562 [==============================] - 59s 38ms/step - loss: 0.5980 - acc: 0.7915 - val_loss: 0.5739 - val_acc: 0.8027
+Epoch 20/50
+1562/1562 [==============================] - 58s 37ms/step - loss: 0.5929 - acc: 0.7934 - val_loss: 0.6599 - val_acc: 0.7753
+Epoch 21/50
+1562/1562 [==============================] - 56s 36ms/step - loss: 0.5893 - acc: 0.7932 - val_loss: 0.5685 - val_acc: 0.8044
+Epoch 22/50
+1562/1562 [==============================] - 57s 36ms/step - loss: 0.5792 - acc: 0.7993 - val_loss: 0.5530 - val_acc: 0.8127
+Epoch 23/50
+1562/1562 [==============================] - 57s 36ms/step - loss: 0.5700 - acc: 0.8012 - val_loss: 0.5730 - val_acc: 0.8065
+Epoch 24/50
+1562/1562 [==============================] - 56s 36ms/step - loss: 0.5585 - acc: 0.8070 - val_loss: 0.5115 - val_acc: 0.8272
+Epoch 25/50
+1562/1562 [==============================] - 57s 36ms/step - loss: 0.5633 - acc: 0.8052 - val_loss: 0.6537 - val_acc: 0.7806
+Epoch 26/50
+1562/1562 [==============================] - 56s 36ms/step - loss: 0.5533 - acc: 0.8082 - val_loss: 0.6639 - val_acc: 0.7823
+Epoch 27/50
+1562/1562 [==============================] - 56s 36ms/step - loss: 0.5492 - acc: 0.8108 - val_loss: 0.5693 - val_acc: 0.8067
+Epoch 28/50
+1562/1562 [==============================] - 56s 36ms/step - loss: 0.5409 - acc: 0.8113 - val_loss: 0.6573 - val_acc: 0.7879
+Epoch 29/50
+1562/1562 [==============================] - 56s 36ms/step - loss: 0.5371 - acc: 0.8132 - val_loss: 0.5898 - val_acc: 0.7990
+Epoch 30/50
+1562/1562 [==============================] - 57s 36ms/step - loss: 0.5374 - acc: 0.8128 - val_loss: 0.6259 - val_acc: 0.7976
+Epoch 31/50
+1562/1562 [==============================] - 56s 36ms/step - loss: 0.5314 - acc: 0.8159 - val_loss: 0.6174 - val_acc: 0.7936
+Epoch 32/50
+1562/1562 [==============================] - 56s 36ms/step - loss: 0.5270 - acc: 0.8169 - val_loss: 0.6259 - val_acc: 0.7969
+Epoch 33/50
+1562/1562 [==============================] - 56s 36ms/step - loss: 0.5191 - acc: 0.8190 - val_loss: 0.6012 - val_acc: 0.8010
+Epoch 34/50
+1562/1562 [==============================] - 56s 36ms/step - loss: 0.5207 - acc: 0.8200 - val_loss: 0.6095 - val_acc: 0.7975
+Epoch 35/50
+1562/1562 [==============================] - 57s 36ms/step - loss: 0.5149 - acc: 0.8210 - val_loss: 0.5695 - val_acc: 0.8165
+Epoch 36/50
+1562/1562 [==============================] - 56s 36ms/step - loss: 0.5079 - acc: 0.8230 - val_loss: 0.6296 - val_acc: 0.7922
+Epoch 37/50
+1562/1562 [==============================] - 56s 36ms/step - loss: 0.5064 - acc: 0.8239 - val_loss: 0.6008 - val_acc: 0.8033
+Epoch 38/50
+1562/1562 [==============================] - 56s 36ms/step - loss: 0.5079 - acc: 0.8239 - val_loss: 0.5133 - val_acc: 0.8283
+Epoch 39/50
+1562/1562 [==============================] - 56s 36ms/step - loss: 0.5007 - acc: 0.8254 - val_loss: 0.5393 - val_acc: 0.8218
+Epoch 40/50
+1562/1562 [==============================] - 56s 36ms/step - loss: 0.5019 - acc: 0.8256 - val_loss: 0.5544 - val_acc: 0.8176
+Epoch 41/50
+1562/1562 [==============================] - 56s 36ms/step - loss: 0.4909 - acc: 0.8293 - val_loss: 0.5348 - val_acc: 0.8200
+Epoch 42/50
+1562/1562 [==============================] - 56s 36ms/step - loss: 0.4895 - acc: 0.8298 - val_loss: 0.5786 - val_acc: 0.8151
+Epoch 43/50
+1562/1562 [==============================] - 56s 36ms/step - loss: 0.4879 - acc: 0.8290 - val_loss: 0.5414 - val_acc: 0.8225
+Epoch 44/50
+1562/1562 [==============================] - 58s 37ms/step - loss: 0.4880 - acc: 0.8312 - val_loss: 0.5438 - val_acc: 0.8190
+Epoch 45/50
+1562/1562 [==============================] - 57s 37ms/step - loss: 0.4816 - acc: 0.8321 - val_loss: 0.4910 - val_acc: 0.8350
+Epoch 46/50
+1562/1562 [==============================] - 56s 36ms/step - loss: 0.4815 - acc: 0.8327 - val_loss: 0.5055 - val_acc: 0.8333
+Epoch 47/50
+1562/1562 [==============================] - 57s 36ms/step - loss: 0.4791 - acc: 0.8342 - val_loss: 0.6006 - val_acc: 0.8118
+Epoch 48/50
+1562/1562 [==============================] - 57s 37ms/step - loss: 0.4690 - acc: 0.8361 - val_loss: 0.5417 - val_acc: 0.8258
+Epoch 49/50
+1562/1562 [==============================] - 57s 36ms/step - loss: 0.4694 - acc: 0.8373 - val_loss: 0.4833 - val_acc: 0.8398
+Epoch 50/50
+1562/1562 [==============================] - 57s 36ms/step - loss: 0.4676 - acc: 0.8370 - val_loss: 0.5423 - val_acc: 0.8231
+Model took 2842.91 seconds to train
+
+Accuracy on test data is: 82.31
 ```
 
 
@@ -237,22 +248,25 @@ Accuracy on test data is: 81.60
 
     
 
-| S.No | Iteration | # Parameters | Val Acc (Best)     | # layers | Time(min) | Model Changes                                                | Remark                                   |
-| ---- | --------- | ------------ | ------------------ | -------- | --------- | ------------------------------------------------------------ | ---------------------------------------- |
-| 1    | Base      | 1,172, 410   | 81.88 (50th Epoch) | 26       | 6.2       | No Change                                                    | N/A                                      |
-| 2    | First     | 604,213      | 100                | 26       | 10        | Conv2D --> SeparableConv2D                                   | Parameters reduced, Acc is constant 1.00 |
-| 3    | Second    | 609,973      | 82.18              | 32       | 12.8      | Batch normalization (SepConv -> BN -> ReLU -> SepConv -> BN -> ReLU -> MP) | Parameters increased, Accuracy is normal |
-| 4    | Third     | 93,109       | 78.80              | 30       | 12.9      | Remove Dense Layer D1(393,728) and D2(131,328)               | Parameters is under 100,000, Acc reduced |
-| 5    | Fourth    | --           | 80.50              | 29       | 12.9      | Remove Dropout from last layer                               | Acc improved                             |
-| 6    | Fifth     | --           | 80.92              | 29       | 12.9      | Reduce Dropout from 0.25 to 0.1                              | Acc improved                             |
-| 7    | Sixth     | --           | 78.98              | 27       | 12.9      | Remove all Dropout                                           | Acc reduced                              |
-| 8    | Seventh   | --           | 69.68              | 27       | 12.9      | Brought Dropout back. Fifth                                  | Acc reduced                              |
-| 9    | Eighth    | --           | 79.91              | 29       | 20        | Increase Batch size (128 --> 256)                            | Acc improved                             |
-| 10   | Ninth     | --           | 77.93              | 29       | 19        | Increased batch size (128 --> 256 --> 512)                   | Acc reduced                              |
-| 11   | Tenth     | --           | 81.40              | 29       | 28        | Decrease batch size (128 --> 64)                             | Acc improved                             |
-| 12   | Eleventh  | --           | 82.13              | 29       | 41        | Decrease batch size (128 --> 64 --> 32)                      | Acc improved and crossed base (81.88%)   |
-| 13   | Twelveth  | 84,277       | 82.44              |          | 38        | Last Dense and Flatten layer replaced with GAP               | Parameters reduced, Acc improved         |
-| 14   | Solution  | --           | 82.59              |          | 38        | --                                                           | --                                       |
+| S.No | Iteration       | # Parameters | Val Acc (Best)     | # layers | Time(min) | Model Changes                                                | Remark                                   |
+| ---- | --------------- | ------------ | ------------------ | -------- | --------- | ------------------------------------------------------------ | ---------------------------------------- |
+| 1    | Base            | 1,172, 410   | 81.88 (50th Epoch) | 26       | 6.2       | No Change                                                    | N/A                                      |
+| 2    | Solution(Final) | 84,277       | 83.98(Best)        |          | 47        | Refer Iteration# 15                                          | Best acccuracy                           |
+| 3    | First           | 604,213      | 100                | 26       | 10        | Conv2D --> SeparableConv2D                                   | Parameters reduced, Acc is constant 1.00 |
+| 4    | Second          | 609,973      | 82.18              | 32       | 12.8      | Batch normalization (SepConv -> BN -> ReLU -> SepConv -> BN -> ReLU -> MP) | Parameters increased, Accuracy is normal |
+| 5    | Third           | 93,109       | 78.80              | 30       | 12.9      | Remove Dense Layer D1(393,728) and D2(131,328)               | Parameters is under 100,000, Acc reduced |
+| 6    | Fourth          | --           | 80.50              | 29       | 12.9      | Remove Dropout from last layer                               | Acc improved                             |
+| 7    | Fifth           | --           | 80.92              | 29       | 12.9      | Reduce Dropout from 0.25 to 0.1                              | Acc improved                             |
+| 8    | Sixth           | --           | 78.98              | 27       | 12.9      | Remove all Dropout                                           | Acc reduced                              |
+| 9    | Seventh         | --           | 69.68              | 27       | 12.9      | Brought Dropout back. Fifth                                  | Acc reduced                              |
+| 10   | Eighth          | --           | 79.91              | 29       | 20        | Increase Batch size (128 --> 256)                            | Acc improved                             |
+| 11   | Ninth           | --           | 77.93              | --       | 19        | Increased batch size (128 --> 256 --> 512)                   | Acc reduced                              |
+| 12   | Tenth           | --           | 81.40              | --       | 28        | Decrease batch size (128 --> 64)                             | Acc improved                             |
+| 13   | Eleventh        | --           | 82.13              | --       | 41        | Decrease batch size (128 --> 64 --> 32)                      | Acc improved and crossed base (81.88%)   |
+| 14   | Twelveth        | 84,277       | 82.44              |          | 38        | Last Dense and Flatten layer replaced with GAP               | Parameters reduced, Acc improved         |
+| 15   | Thirteenth      | --           | 69.48              |          | 43        | Image Augmentation (horizontal and vertical flip, rotation)  | Acc reduced drastically to 69.48         |
+| 16   | Fourteenth      | --           |                    |          |           |                                                              |                                          |
+| 17   | Fifteenth       | --           | 83.11              |          | 30        | Image Augmentation(horizontal flip, rotation range, slide(height and width)) | Acc improved with best accuracy          |
 
 
 
@@ -383,3 +397,50 @@ Accuracy on test data is: 81.60
 - Acc increased 
 - Plot is zig-zag with small spikes
 - Model still overfitting
+
+#### Thirteenth
+
+- Image augmentation 
+  - Horizontal and vertical flip
+  - rotation : 90
+- Epoch 26 - loss: loss: 0.9147 - acc: 0.6798 - val_loss: 0.8799 - val_acc: 0.6948
+- Best Val Acc - 69.48%, Train Acc - 67.98%, Diff -2
+- Overall:   loss: 0.8432 - acc: 0.7061 - val_loss: 0.9430 - val_acc: 0.6782
+- Acc reduced drastically
+- Plot is zig-zag with small spikes
+- Model still overfitting
+
+#### Fourteenth
+
+- Image augmentation 
+  - Horizontal flip
+  - rotation : 90
+- Epoch 41- loss: 0.7552 - acc: 0.7370 - val_loss: 0.7107 - val_acc: 0.7585
+- Best Val Acc - 75.85%, Train Acc - 73.70%, Diff -2.15
+- Overall: loss: 0.7311 - acc: 0.7473 - val_loss: 0.7469 - val_acc: 0.7463
+- Acc reduced drastically
+- Plot is zig-zag with small spikes, converging better with image augmentation
+- Model still overfitting
+
+#### Fifteenth - Solution(83.98%)
+
+- Looks like rotation by 90 degree is an overkill.
+
+- Image augmentation 
+
+  ```python
+  rotation_range=15,
+  horizontal_flip=True,
+  width_shift_range=0.1,
+  height_shift_range=0.1
+  ```
+
+- Epoch 50- loss: 0.4645 - acc: 0.8396 - val_loss: 0.5118 - val_acc: 0.8311
+
+- Best Val Acc - 83.11%, Train Acc - 83.96%, Diff -0.85
+
+- Overall: same as above
+
+- Acc improved with best accuracy
+
+- Plot is zig-zag with small spikes, converging better with image augmentation
