@@ -74,10 +74,11 @@ print('Learning rate: ', lr)
 | 10   | Eighth          | V1    | ResNet20v1   | 274,442      | 32         | 81.85          | 55                    | lr 0.001 to 0.0001                                           | Acc dropped                                                  |
 | 11   | Ninth           | V1    | ResNet20v1   | 274,442      | 32         | 81.97          | 70                    | lr reset to 0.001, apply cutout(5)                           | Acc reduced                                                  |
 | 12   | Tenth           | V1    | ResNet20v1   | 274,442      | 16         | 84.98          | 88                    | Removed Cutout, Reduced batch size 32->16                    | Buffered data was truncated after reaching the output size limit. Acc redcued, time increased, |
-| 13   | Eleventh        | V1    | ResNet20v1   | 274,442      | 128        | 88.01          | 27                    | LR(25->35->45) : 0.001 -> 0.0001 -> 0.00001, BS 128, verbose=2 | Acc improved and crossed threshold of 88%.                   |
+| 13   | Eleventh        | V1    | ResNet20v1   | 274,442      | 128        | 88.09          | 27                    | LR(25->35->45) : 0.001 -> 0.0001 -> 0.00001, BS 128, verbose=2 | Acc improved and crossed threshold of 88%.                   |
+| 14   | Thirteenth      | V1    | ResNet20v1   | 274,442      | 32         | 89.20          | 50                    | bs 32                                                        |                                                              |
 |      |                 |       |              |              |            |                |                       |                                                              |                                                              |
 |      |                 |       |              |              |            |                |                       |                                                              |                                                              |
 |      |                 |       |              |              |            |                |                       |                                                              |                                                              |
-|      |                 |       |              |              |            |                |                       |                                                              |                                                              |
+
 
 
