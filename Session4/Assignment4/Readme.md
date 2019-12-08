@@ -6,22 +6,22 @@
 
 ### Updated Model
 
-- Best Val Accuracy(46th Epoch): **88.01%**
+- Best Val Accuracy(46th Epoch): **89.29%**
 - Total parameters: **274,442**
 - No of Epochs: **50**
 - ipynb file : [Solution](EIP4_A4B_Praveen_Raghuvanshi.ipynb)
 
 ```python
-Epoch 46/50
+Epoch 43/50
 Learning rate:  1e-05
- - 27s - loss: 0.3266 - acc: 0.9342 - val_loss: 0.4991 - val_acc: 0.8801
+ - 49s - loss: 0.3309 - acc: 0.9386 - val_loss: 0.4771 - val_acc: 0.8929
+
 ```
 
 ##### Model 
 
 - Used V1 from https://keras.io/examples/cifar10_resnet/
 - Changes
-  - Batch Size : 32 -> 128
   - Learning Rate: Epcoh/lr : 1-20(0.001) --> 21-35(0.0001) --> 36->45(1e-05) --> 46-50(1e-06)
 
 ```python
