@@ -163,3 +163,10 @@
 - There are different ways of reducing the parameters(1x1, depthwise, reduce no of filters). When to use them?
 - Concatenation and Addition of layers
 - What is mini-batch in BN?
+
+
+
+### Resources
+
+- [Freeze layers - Keras Tutorial : Fine-tuning using pre-trained models](https://www.learnopencv.com/keras-tutorial-fine-tuning-using-pre-trained-models/)
+
