@@ -29,3 +29,5 @@
 - No of Epochs: **200**
 - Network: **DenseNet121**
 - ipynb file : [Solution](EIP4_A5_Praveen_Raghuvanshi_DenseNet_Final.ipynb)
+
+Note: In case text in ipynb file is truncated, please open github URL in [https://nbviewer.jupyter.org](https://nbviewer.jupyter.org/)
