@@ -6,7 +6,11 @@
 
 [![EIP4 Session 1](http://img.youtube.com/vi/ATDwNCwxSQo/0.jpg)](http://www.youtube.com/watch?v=ATDwNCwxSQo)
 
+### Canvas Links
 
+- [Today we can read brains using neural networks now!](https://www.biorxiv.org/content/10.1101/787101v2.full)
+- [Video - Drawing timelapse](https://youtu.be/EuBiaRO8QOk)
+- 
 
 
 
